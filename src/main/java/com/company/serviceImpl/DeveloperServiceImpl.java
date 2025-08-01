@@ -6,6 +6,8 @@ import com.company.service.DeveloperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DeveloperServiceImpl implements DeveloperService {
 
@@ -18,6 +20,12 @@ public class DeveloperServiceImpl implements DeveloperService {
 
         Developer saveDeveloper = developerRepository.save(developer);
         return "developer saved";
+    }
+
+    @Override
+    public List<Developer> getAllDevelopers() {
+        List<Developer> developerList = developerRepository.findAll();
+        return developerList;
     }
 
 }
