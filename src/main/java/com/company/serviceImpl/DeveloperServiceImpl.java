@@ -35,7 +35,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     }
 
     @Override
-    public Developer updateDeveloper(int id, Developer newData) {
+    public Developer updateDeveloper(int id, @org.jetbrains.annotations.NotNull Developer newData) {
         Developer developer = developerRepository.findById(id).orElseThrow(() -> new NullPointerException("Id not found " + id));
         developer.setfName(newData.getfName());
         developer.setlName(newData.getlName());
