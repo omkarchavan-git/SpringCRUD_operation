@@ -4,6 +4,7 @@ import com.company.entity.Developer;
 import com.company.exceptionHandeler.ResourceNotFoundException;
 import com.company.repository.DeveloperRepository;
 import com.company.service.DeveloperService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,14 +32,14 @@ public class DeveloperServiceImpl implements DeveloperService {
     }
 
     @Override
-    public Developer getDeveloperById(int id) {
+    public Developer getDeveloperById(@NotNull int id) {
         Developer developerList = developerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Id not found " +id));
         return developerList;
     }
 
     @Override
-    public Developer updateDeveloper(int id, @RequestBody Developer newData) {
+    public Developer updateDeveloper(int id, @NotNull @RequestBody Developer newData) {
         Developer developer = developerRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
 
