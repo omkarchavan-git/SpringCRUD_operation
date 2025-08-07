@@ -12,15 +12,10 @@ public class Developer {
     private int id;
 
     private String fName;
-
     private String lName;
-
     private int age;
-
     private String city;
-
     private String gender;
-
     private long salary;
 
     public int getId() {

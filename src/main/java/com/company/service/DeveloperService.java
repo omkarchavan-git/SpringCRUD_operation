@@ -10,4 +10,10 @@ public interface DeveloperService {
 
    // method to get all developers
    public List<Developer>  getAllDevelopers();
+
+   Developer getDeveloperById(int id);
+
+   //Update developer By id
+   Developer updateDeveloper (int id, Developer newData);
+
 }
