@@ -1,10 +1,12 @@
 package com.company.serviceImpl;
 
 import com.company.entity.Developer;
+import com.company.exceptionHandeler.ResourceNotFoundException;
 import com.company.repository.DeveloperRepository;
 import com.company.service.DeveloperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -30,13 +32,16 @@ public class DeveloperServiceImpl implements DeveloperService {
 
     @Override
     public Developer getDeveloperById(int id) {
-        Developer developerList = developerRepository.findById(id).orElseThrow(() -> new NullPointerException("Id not found " +id));
+        Developer developerList = developerRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Id not found " +id));
         return developerList;
     }
 
     @Override
-    public Developer updateDeveloper(int id, @org.jetbrains.annotations.NotNull Developer newData) {
-        Developer developer = developerRepository.findById(id).orElseThrow(() -> new NullPointerException("Id not found " + id));
+    public Developer updateDeveloper(int id, @RequestBody Developer newData) {
+        Developer developer = developerRepository.findById(id).
+                orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
+
         developer.setfName(newData.getfName());
         developer.setlName(newData.getlName());
         developer.setAge(newData.getAge());
