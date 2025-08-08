@@ -18,11 +18,20 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Autowired
     private DeveloperRepository developerRepository;
 
+    // save single data into the developer
     @Override
     public String saveDeveloper(Developer developer) {
 
         Developer saveDeveloper = developerRepository.save(developer);
         return "developer saved";
+    }
+
+    // add multiple developers data at once
+    @Override
+    public List<Developer> addAllDevelopers(List<Developer> developerList) {
+
+        List<Developer> developerList1 = developerRepository.saveAll(developerList);
+        return developerList1;
     }
 
     @Override

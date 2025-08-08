@@ -23,6 +23,7 @@ public class DeveloperController {
         return new ResponseEntity<>("Developer Data Saved", HttpStatus.CREATED);
     }
 
+    // Get all developers data
     @GetMapping("/getAllDeveloper")
     public ResponseEntity<List<Developer>> getAllDevelopers(){
         List<Developer> developerList = developerService.getAllDevelopers();

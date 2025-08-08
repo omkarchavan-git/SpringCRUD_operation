@@ -6,7 +6,11 @@ import java.util.List;
 
 public interface DeveloperService {
 
+   // method to add single data into db
    public String saveDeveloper(Developer developer);
+
+   // method to add multiple data at once into db
+   public List<Developer> addAllDevelopers(List<Developer> developerList);
 
    // method to get all developers
    public List<Developer>  getAllDevelopers();
