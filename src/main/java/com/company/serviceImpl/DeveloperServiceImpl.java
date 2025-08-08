@@ -32,7 +32,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     }
 
     @Override
-    public Developer getDeveloperById(@NotNull int id) {
+    public Developer getDeveloperById(int id) {
         Developer developerList = developerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Id not found " +id));
         return developerList;
@@ -52,6 +52,15 @@ public class DeveloperServiceImpl implements DeveloperService {
 
         Developer updateDeveloper = developerRepository.save(developer);
         return updateDeveloper;
+    }
+
+    @Override
+    public Developer delteDeveloper(int id) {
+        Developer developer = developerRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("ID not Found" + id));
+        developerRepository.deleteById(id);
+
+        return null;
     }
 
 }

@@ -28,6 +28,7 @@ public class DeveloperController {
         List<Developer> developerList = developerService.getAllDevelopers();
         return new ResponseEntity<>(developerList, HttpStatus.OK);
     }
+
     @GetMapping("/getById/{id}")
     public ResponseEntity<Developer> getDeveloperById(@PathVariable("id") int id){
         Developer developer = developerService.getDeveloperById(id);
