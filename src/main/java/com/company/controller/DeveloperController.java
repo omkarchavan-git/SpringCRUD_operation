@@ -23,6 +23,14 @@ public class DeveloperController {
         return new ResponseEntity<>("Developer Data Saved", HttpStatus.CREATED);
     }
 
+    // Add Multiple data at once
+    @PostMapping("/addMultipleDevelopers")
+    public ResponseEntity<List<Developer>> addAllDevelopers(@RequestBody List<Developer> developerList)
+    {
+        List<Developer> developerList1 =  developerService.addAllDevelopers(developerList);
+        return new ResponseEntity<>(developerList1, HttpStatus.CREATED);
+    }
+
     // Get all developers data
     @GetMapping("/getAllDeveloper")
     public ResponseEntity<List<Developer>> getAllDevelopers(){
