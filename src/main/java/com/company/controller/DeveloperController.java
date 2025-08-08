@@ -48,4 +48,12 @@ public class DeveloperController {
         return new ResponseEntity<>(dev, HttpStatus.OK);
     }
 
+    // Delete developer data by ID
+    @GetMapping("/deleteByID/{id}")
+    public ResponseEntity<Developer> deleteByID(@PathVariable("id") int id)
+    {
+        Developer developer = developerService.delteDeveloper(id);
+        return new ResponseEntity<>(developer, HttpStatus.OK);
+    }
+
 }
