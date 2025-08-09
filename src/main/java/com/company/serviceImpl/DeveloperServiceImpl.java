@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DeveloperServiceImpl implements DeveloperService {
@@ -74,9 +75,10 @@ public class DeveloperServiceImpl implements DeveloperService {
 
     @Override
     public List<Developer> getbyCity(String city) {
-        List<Developer> developerList = developerRepository.findAll();
                 
-        return developerList;
+        return developerRepository.findAll()
+                .stream().filter(dev -> city.equalsIgnoreCase(dev.getCity()))
+                .collect(Collectors.toList());
     }
 
 }
