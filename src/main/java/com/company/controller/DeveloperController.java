@@ -2,10 +2,12 @@ package com.company.controller;
 
 import com.company.entity.Developer;
 import com.company.service.DeveloperService;
+import org.aspectj.lang.annotation.RequiredTypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -25,44 +27,55 @@ public class DeveloperController {
 
     // Add Multiple data at once
     @PostMapping("/addMultipleDevelopers")
-    public ResponseEntity<List<Developer>> addAllDevelopers(@RequestBody List<Developer> developerList)
-    {
-        List<Developer> developerList1 =  developerService.addAllDevelopers(developerList);
+    public ResponseEntity<List<Developer>> addAllDevelopers(@RequestBody List<Developer> developerList) {
+        List<Developer> developerList1 = developerService.addAllDevelopers(developerList);
         return new ResponseEntity<>(developerList1, HttpStatus.CREATED);
     }
 
     // Get all developers data
     @GetMapping("/getAllDeveloper")
-    public ResponseEntity<List<Developer>> getAllDevelopers(){
+    public ResponseEntity<List<Developer>> getAllDevelopers() {
         List<Developer> developerList = developerService.getAllDevelopers();
         return new ResponseEntity<>(developerList, HttpStatus.OK);
     }
 
     @GetMapping("/getById/{id}")
-    public ResponseEntity<Developer> getDeveloperById(@PathVariable("id") int id){
+    public ResponseEntity<Developer> getDeveloperById(@PathVariable("id") int id) {
         Developer developer = developerService.getDeveloperById(id);
 
         if (developer != null) {
-            return  ResponseEntity.ok(developer);
-        }
-        else {
+            return ResponseEntity.ok(developer);
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PutMapping("/updateDeveloper/{id}")
-    public ResponseEntity<Developer> updateDeveloperByID(@PathVariable("id") int id, @RequestBody Developer developer)
-    {
+    public ResponseEntity<Developer> updateDeveloperByID(@PathVariable("id") int id, @RequestBody Developer developer) {
         Developer dev = developerService.updateDeveloper(id, developer);
         return new ResponseEntity<>(dev, HttpStatus.OK);
     }
 
     // Delete developer data by ID
     @GetMapping("/deleteByID/{id}")
-    public ResponseEntity<Developer> deleteByID(@PathVariable("id") int id)
-    {
+    public ResponseEntity<Developer> deleteByID(@PathVariable("id") int id) {
         Developer developer = developerService.delteDeveloper(id);
         return new ResponseEntity<>(developer, HttpStatus.OK);
+    }
+
+    // filter by City
+    @GetMapping("/getByCity")
+    public ResponseEntity<List<Developer>> getByCity(@RequestParam(required = false) String city) {
+
+        List<Developer> developerList;
+        if (city != null) {
+
+            developerList = developerService.getbyCity(city);
+        }
+        else {
+            developerList = developerService.getAllDevelopers();
+        }
+        return ResponseEntity.ok(developerList);
     }
 
 }
