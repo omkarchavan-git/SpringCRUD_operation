@@ -72,7 +72,7 @@ public class DeveloperController {
     }
 
     // filter by multiple Cities
-    @GetMapping("/getByCity")
+    @GetMapping("/filterByCity")
     public ResponseEntity<List<Developer>> getByCity(@RequestParam(required = false) List<String> city) {
 
         List<Developer> developerList;
