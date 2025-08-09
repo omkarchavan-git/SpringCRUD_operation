@@ -63,14 +63,22 @@ public class DeveloperController {
         return new ResponseEntity<>(developer, HttpStatus.OK);
     }
 
-    // filter by City
+    // filter data by single city
+    @GetMapping("/getByCity")
+    public ResponseEntity<List<Developer>> getByCity(@RequestParam(required = false) String city)
+    {
+        List<Developer> developerList = developerService.getByCity(city);
+        return new ResponseEntity<>(developerList, HttpStatus.OK);
+    }
+
+    // filter by multiple Cities
     @GetMapping("/getByCity")
     public ResponseEntity<List<Developer>> getByCity(@RequestParam(required = false) List<String> city) {
 
         List<Developer> developerList;
         if (city != null) {
 
-            developerList = developerService.getbyCity(city);
+            developerList = developerService.filterByCity(city);
         }
         else {
             developerList = developerService.getAllDevelopers();

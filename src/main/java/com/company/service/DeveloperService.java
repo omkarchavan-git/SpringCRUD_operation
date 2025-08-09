@@ -27,7 +27,7 @@ public interface DeveloperService {
    // filter by one city
    List<Developer> getByCity(String city);
 
-   // Filter data by multiplr city
-   List<Developer> getbyCity(List<String> city);
 
+   // filter multiple cities at once
+   List<Developer> filterByCity(List<String> city);
 }

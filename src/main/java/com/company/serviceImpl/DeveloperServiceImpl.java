@@ -44,7 +44,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Override
     public Developer getDeveloperById(int id) {
         Developer developerList = developerRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Id not found " +id));
+                .orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
         return developerList;
     }
 
@@ -67,7 +67,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Override
     public Developer delteDeveloper(int id) {
         Developer developer = developerRepository.findById(id)
-                .orElseThrow(()-> new ResourceNotFoundException("ID not Found" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("ID not Found" + id));
         developerRepository.deleteById(id);
 
         return null;
@@ -75,19 +75,22 @@ public class DeveloperServiceImpl implements DeveloperService {
 
     // filter by one city
     @Override
-    public List<Developer> getByCity(String city)
-    {
-
+    public List<Developer> getByCity(String city) {
+        List<Developer> developerList = developerRepository.findAll()
+                .stream().filter(c -> city.equalsIgnoreCase(c.getCity()))
+                .collect(Collectors.toList());
+        return developerList;
     }
 
     // filter multiple cities at once
     @Override
-    public List<Developer> getbyCity(List<String> city) {
-                
+    public List<Developer> filterByCity(List<String> city) {
+
         return developerRepository.findAll()
                 .stream().filter(dev -> city
                         .stream().anyMatch(c -> c.equalsIgnoreCase(dev.getCity())))
                 .collect(Collectors.toList());
     }
-
 }
+
+
