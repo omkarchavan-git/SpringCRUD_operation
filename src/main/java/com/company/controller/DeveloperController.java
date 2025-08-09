@@ -67,7 +67,14 @@ public class DeveloperController {
     @GetMapping("/getByCity")
     public ResponseEntity<List<Developer>> getByCity(@RequestParam(required = false) String city)
     {
-        List<Developer> developerList = developerService.getByCity(city);
+        List<Developer> developerList;
+
+        if (city != null) {
+            developerList = developerService.getByCity(city);
+        }
+        else {
+            developerList = developerService.getAllDevelopers();
+        }
         return new ResponseEntity<>(developerList, HttpStatus.OK);
     }
 
