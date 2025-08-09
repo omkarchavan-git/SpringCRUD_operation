@@ -72,4 +72,10 @@ public class DeveloperServiceImpl implements DeveloperService {
         return null;
     }
 
+    @Override
+    public List<Developer> getbyCity(String city) {
+        List<Developer> developerList = developerRepository.filterByCity(city);
+        return developerList;
+    }
+
 }
