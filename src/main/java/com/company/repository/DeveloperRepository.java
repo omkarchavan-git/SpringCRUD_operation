@@ -10,6 +10,6 @@ import java.util.List;
 public interface DeveloperRepository extends JpaRepository<Developer, Integer> {
 
     //Search by City
-    List<Developer> filterByCity(String city);
+   
 
 }

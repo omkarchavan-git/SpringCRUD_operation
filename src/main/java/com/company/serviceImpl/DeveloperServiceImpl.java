@@ -73,11 +73,20 @@ public class DeveloperServiceImpl implements DeveloperService {
         return null;
     }
 
+    // filter by one city
     @Override
-    public List<Developer> getbyCity(String city) {
+    public List<Developer> getByCity(String city)
+    {
+
+    }
+
+    // filter multiple cities at once
+    @Override
+    public List<Developer> getbyCity(List<String> city) {
                 
         return developerRepository.findAll()
-                .stream().filter(dev -> city.equalsIgnoreCase(dev.getCity()))
+                .stream().filter(dev -> city
+                        .stream().anyMatch(c -> c.equalsIgnoreCase(dev.getCity())))
                 .collect(Collectors.toList());
     }
 

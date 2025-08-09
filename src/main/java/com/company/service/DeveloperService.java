@@ -24,7 +24,10 @@ public interface DeveloperService {
    //Delete developer Data By ID
    Developer delteDeveloper(int id);
 
-   // Filter data by city
-   List<Developer> getbyCity(String city);
+   // filter by one city
+   List<Developer> getByCity(String city);
+
+   // Filter data by multiplr city
+   List<Developer> getbyCity(List<String> city);
 
 }

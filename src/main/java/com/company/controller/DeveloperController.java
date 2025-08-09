@@ -65,7 +65,7 @@ public class DeveloperController {
 
     // filter by City
     @GetMapping("/getByCity")
-    public ResponseEntity<List<Developer>> getByCity(@RequestParam(required = false) String city) {
+    public ResponseEntity<List<Developer>> getByCity(@RequestParam(required = false) List<String> city) {
 
         List<Developer> developerList;
         if (city != null) {
