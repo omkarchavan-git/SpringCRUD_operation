@@ -74,7 +74,8 @@ public class DeveloperServiceImpl implements DeveloperService {
 
     @Override
     public List<Developer> getbyCity(String city) {
-        List<Developer> developerList = developerRepository.filterByCity(city);
+        List<Developer> developerList = developerRepository.findAll();
+                
         return developerList;
     }
 
