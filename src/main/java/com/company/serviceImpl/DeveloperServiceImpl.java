@@ -101,6 +101,12 @@ public class DeveloperServiceImpl implements DeveloperService {
         return developerList;
     }
 
+    @Override
+    public List<Developer> filterByFirstName(String fName) {
+
+        return List.of();
+    }
+
 
 }
 

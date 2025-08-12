@@ -33,4 +33,7 @@ public interface DeveloperService {
 
    //Filter by Gender
    List<Developer> filterByGender(String gender);
+
+   //Filter by First Name
+   List<Developer> filterByFirstName(String fName);
 }
