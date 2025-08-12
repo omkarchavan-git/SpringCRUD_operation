@@ -39,6 +39,7 @@ public class DeveloperController {
         return new ResponseEntity<>(developerList, HttpStatus.OK);
     }
 
+    // Get data by Id
     @GetMapping("/getById/{id}")
     public ResponseEntity<Developer> getDeveloperById(@PathVariable("id") int id) {
         Developer developer = developerService.getDeveloperById(id);
@@ -50,6 +51,7 @@ public class DeveloperController {
         }
     }
 
+    // Update By ID
     @PutMapping("/updateDeveloper/{id}")
     public ResponseEntity<Developer> updateDeveloperByID(@PathVariable("id") int id, @RequestBody Developer developer) {
         Developer dev = developerService.updateDeveloper(id, developer);

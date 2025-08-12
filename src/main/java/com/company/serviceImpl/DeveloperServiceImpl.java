@@ -91,6 +91,17 @@ public class DeveloperServiceImpl implements DeveloperService {
                         .stream().anyMatch(c -> c.equalsIgnoreCase(dev.getCity())))
                 .collect(Collectors.toList());
     }
+
+    // filter by Gender
+    @Override
+    public List<Developer> filterByGender(String gender) {
+       List<Developer> developerList =  developerRepository.findAll()
+                .stream().filter( c -> gender.equalsIgnoreCase(c.getGender()))
+                .collect(Collectors.toList());
+        return developerList;
+    }
+
+
 }
 
 

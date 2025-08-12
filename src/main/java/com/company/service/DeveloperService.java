@@ -30,4 +30,7 @@ public interface DeveloperService {
 
    // filter multiple cities at once
    List<Developer> filterByCity(List<String> city);
+
+   //Filter by Gender
+   List<Developer> filterByGender(String gender);
 }
