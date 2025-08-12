@@ -104,7 +104,11 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Override
     public List<Developer> filterByFirstName(String fName) {
 
-        return List.of();
+        List<Developer> developerList = developerRepository.findAll()
+                .stream().filter( k -> fName.equalsIgnoreCase(k.getFName()))
+                .collect(Collectors.toList());
+
+        return developerList;
     }
 
 
