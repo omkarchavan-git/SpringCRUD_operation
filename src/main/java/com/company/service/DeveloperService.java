@@ -36,4 +36,7 @@ public interface DeveloperService {
 
    //Filter by First Name
    List<Developer> filterByFirstName(String fName);
+
+   //Filter by LAst Name
+   List<Developer> filterByLastName(String lName);
 }
