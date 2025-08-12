@@ -103,4 +103,13 @@ public class DeveloperController {
         return new ResponseEntity<>(developerList, HttpStatus.OK);
     }
 
+    // Filter By First Name
+
+    @GetMapping("/filterByFirstName")
+    public ResponseEntity <List<Developer>> filterByFirstName(@RequestParam(required = false) String fName)
+    {
+        List<Developer> developerList = developerService.filterByFirstName(fName);
+        return new ResponseEntity<>(developerList, HttpStatus.OK);
+     }
+
 }
