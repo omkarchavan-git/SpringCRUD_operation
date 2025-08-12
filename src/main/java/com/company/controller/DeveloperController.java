@@ -67,14 +67,12 @@ public class DeveloperController {
 
     // filter data by single city
     @GetMapping("/getByCity")
-    public ResponseEntity<List<Developer>> getByCity(@RequestParam(required = false) String city)
-    {
+    public ResponseEntity<List<Developer>> getByCity(@RequestParam(required = false) String city) {
         List<Developer> developerList;
 
         if (city != null) {
             developerList = developerService.getByCity(city);
-        }
-        else {
+        } else {
             developerList = developerService.getAllDevelopers();
         }
         return new ResponseEntity<>(developerList, HttpStatus.OK);
@@ -88,8 +86,7 @@ public class DeveloperController {
         if (city != null) {
 
             developerList = developerService.filterByCity(city);
-        }
-        else {
+        } else {
             developerList = developerService.getAllDevelopers();
         }
         return ResponseEntity.ok(developerList);
@@ -97,19 +94,24 @@ public class DeveloperController {
 
     // Filter by Gender
     @GetMapping("/filterByGender")
-    public ResponseEntity<List<Developer>> filterByGender(@RequestParam(required = false) String gender)
-    {
+    public ResponseEntity<List<Developer>> filterByGender(@RequestParam(required = false) String gender) {
         List<Developer> developerList = developerService.filterByGender(gender);
         return new ResponseEntity<>(developerList, HttpStatus.OK);
     }
 
     // Filter By First Name
-
     @GetMapping("/filterByFirstName")
-    public ResponseEntity <List<Developer>> filterByFirstName(@RequestParam(required = false) String fName)
-    {
+    public ResponseEntity<List<Developer>> filterByFirstName(@RequestParam(required = false) String fName) {
         List<Developer> developerList = developerService.filterByFirstName(fName);
         return new ResponseEntity<>(developerList, HttpStatus.OK);
-     }
+    }
+
+    // Filter By Last  Name
+    @GetMapping("/filterByLastName")
+    public ResponseEntity<List<Developer>> filterByLasrName(@RequestParam(required = false) String lName) {
+        List<Developer> developerList = developerService.filterByFirstName(lName);
+        return new ResponseEntity<>(developerList, HttpStatus.OK);
+    }
+
 
 }
