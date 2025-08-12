@@ -95,4 +95,12 @@ public class DeveloperController {
         return ResponseEntity.ok(developerList);
     }
 
+    // Filter by Gender
+    @GetMapping("/filterByGender")
+    public ResponseEntity<List<Developer>> filterByGender(@RequestParam(required = false) String gender)
+    {
+        List<Developer> developerList = developerService.filterByGender(gender);
+        return new ResponseEntity<>(developerList, HttpStatus.OK);
+    }
+
 }
