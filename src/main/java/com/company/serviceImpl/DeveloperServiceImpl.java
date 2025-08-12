@@ -53,8 +53,8 @@ public class DeveloperServiceImpl implements DeveloperService {
         Developer developer = developerRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
 
-        developer.setfName(newData.getfName());
-        developer.setlName(newData.getlName());
+        developer.setFName(newData.getFName());
+        developer.setLName(newData.getLName());
         developer.setAge(newData.getAge());
         developer.setCity(newData.getCity());
         developer.setGender(newData.getGender());
