@@ -28,10 +28,10 @@ public class ExcelController {
     {
         try{
             excelService.saveExcelData(file);
-            return "Excel data Uploaded";
+            return "Excel data Uploaded : ";
         }
         catch (Exception e) {
-            return "Error : Can not upload data";
+            return "Error : Can not upload data : " + e.getMessage();
         }
     }
 }
