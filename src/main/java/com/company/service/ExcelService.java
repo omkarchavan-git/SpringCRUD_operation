@@ -32,13 +32,12 @@ public class ExcelService {
                     developer.setFName(row.getCell(0).getStringCellValue());
                     developer.setLName(row.getCell(1).getStringCellValue());
                     developer.setAge((int) row.getCell(2).getNumericCellValue());
-                    developer.setGender(row.getCell(3).getStringCellValue());
-                    developer.setSalary((long) row.getCell(4).getNumericCellValue());
-                    developer.setCity(row.getCell(5).getStringCellValue());
+                    developer.setCity(row.getCell(3).getStringCellValue());
+                    developer.setGender(row.getCell(4).getStringCellValue());
+                    developer.setSalary((long) row.getCell(5).getNumericCellValue());
 
                     developerRepository.save(developer);
                 }
-
             }
         } catch (IOException e) {
             throw new RuntimeException("Failed to Add excel file ");
