@@ -53,8 +53,8 @@ public class DeveloperServiceImpl implements DeveloperService {
         Developer developer = developerRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
 
-        developer.setFName(newData.getFName());
-        developer.setLName(newData.getLName());
+        developer.setFirstname(newData.getFirstname());
+        developer.setLastName(newData.getLastName());
         developer.setAge(newData.getAge());
         developer.setCity(newData.getCity());
         developer.setGender(newData.getGender());
@@ -105,7 +105,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     public List<Developer> filterByFirstName(String fName) {
 
         List<Developer> developerList = developerRepository.findAll()
-                .stream().filter( k -> fName.equalsIgnoreCase(k.getFName()))
+                .stream().filter( k -> fName.equalsIgnoreCase(k.getFirstname()))
                 .collect(Collectors.toList());
 
         return developerList;
@@ -115,7 +115,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     public List<Developer> filterByLastName(String lName) {
 
         List<Developer> developerList = developerRepository.findAll()
-                .stream().filter( k -> lName.equalsIgnoreCase(k.getLName()))
+                .stream().filter( k -> lName.equalsIgnoreCase(k.getLastName()))
                 .collect(Collectors.toList());
         return developerList;
     }

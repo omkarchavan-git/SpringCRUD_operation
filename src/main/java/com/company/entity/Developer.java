@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 
-@Getter     // Lombok dependency will automatically add the Getter and Setters
+@Getter
 @Setter
 @ToString
 
@@ -18,8 +18,11 @@ public class Developer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String fName;
-    private String lName;
+
+    private String firstname;
+
+
+    private String lastName;
     private int age;
     private String city;
     private String gender;

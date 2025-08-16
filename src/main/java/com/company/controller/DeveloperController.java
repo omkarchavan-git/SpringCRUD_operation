@@ -16,13 +16,29 @@ public class DeveloperController {
     @Autowired
     private DeveloperService developerService;
 
+//    @PostMapping("/addData")
+//    public ResponseEntity<String> addDeveloper(@RequestBody Developer developer) {
+//
+//        System.err.println(developer);
+//        developerService.saveDeveloper(developer);
+//        return new ResponseEntity<>("Developer Data Saved", HttpStatus.CREATED);
+//    }
+
+    // added with vehicle mapping
     @PostMapping("/addData")
     public ResponseEntity<String> addDeveloper(@RequestBody Developer developer) {
 
+        // Ensure the bidirectional mapping is set
+        if (developer.getVehicles() != null) {
+            developer.getVehicles().forEach(vehicle -> vehicle.setDeveloper(developer));
+        }
+
         System.err.println(developer);
         developerService.saveDeveloper(developer);
+
         return new ResponseEntity<>("Developer Data Saved", HttpStatus.CREATED);
     }
+
 
     // Add Multiple data at once
     @PostMapping("/addMultipleDevelopers")

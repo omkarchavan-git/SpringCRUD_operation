@@ -29,8 +29,8 @@ public class ExcelService {
                 if (row != null) {
                     Developer developer = new Developer();
 
-                    developer.setFName(row.getCell(0).getStringCellValue());
-                    developer.setLName(row.getCell(1).getStringCellValue());
+                    developer.setFirstname((row.getCell(0).getStringCellValue()));
+                    developer.setLastName(row.getCell(1).getStringCellValue());
                     developer.setAge((int) row.getCell(2).getNumericCellValue());
                     developer.setCity(row.getCell(3).getStringCellValue());
                     developer.setGender(row.getCell(4).getStringCellValue());
