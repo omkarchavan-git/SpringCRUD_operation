@@ -1,12 +1,11 @@
 package com.company.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.List;
 
 @Entity
 
@@ -25,6 +24,10 @@ public class Developer {
     private String city;
     private String gender;
     private long salary;
+
+    // One Employee -> Many Vehicles
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Vehicle> vehicles;
 
 
 }
