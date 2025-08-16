@@ -3,7 +3,7 @@ package com.company.entity;
 import jakarta.persistence.*;
 
 @Entity
-public class Vehicle {
+public class Vehicles {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +14,7 @@ public class Vehicle {
 
     // Many Vehicles -> One Developer
     @ManyToOne
-    @JoinColumn(name = "Developer_id")  // foreign key in Vehicle table
+    @JoinColumn(name = "developer_id")  // foreign key in Vehicle table
     private Developer Developer;
 
     // Getters & Setters

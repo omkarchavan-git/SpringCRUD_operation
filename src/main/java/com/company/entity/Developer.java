@@ -26,8 +26,6 @@ public class Developer {
     private long salary;
 
     // One Employee -> Many Vehicles
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Vehicle> vehicles;
-
-
+    @OneToMany(mappedBy = "Developer", cascade = CascadeType.ALL)
+    private List<Vehicles> vehicles;
 }
