@@ -120,6 +120,11 @@ public class DeveloperServiceImpl implements DeveloperService {
         return developerList;
     }
 
+    @Override
+    public List<Developer> getByCityName(String city) {
+        return developerRepository.findByCity(city);
+    }
+
 
 }
 
