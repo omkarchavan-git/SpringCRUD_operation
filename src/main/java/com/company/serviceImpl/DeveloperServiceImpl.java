@@ -125,6 +125,11 @@ public class DeveloperServiceImpl implements DeveloperService {
         return developerRepository.findByCity(city);
     }
 
+    @Override
+    public List<Developer> findByAge(int age) {
+        return developerRepository.findByAge(age);
+    }
+
 
 }
 
