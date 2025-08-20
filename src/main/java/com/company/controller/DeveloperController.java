@@ -3,6 +3,7 @@ package com.company.controller;
 import com.company.entity.Developer;
 import com.company.service.DeveloperService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -126,6 +127,14 @@ public class DeveloperController {
     public ResponseEntity<List<Developer>> filterByLasrName(@RequestParam(required = false) String lName) {
         List<Developer> developerList = developerService.filterByFirstName(lName);
         return new ResponseEntity<>(developerList, HttpStatus.OK);
+    }
+
+    // get data by city using JQSQL query
+    @GetMapping("/getByCity/{city}")
+    public ResponseEntity<List<Developer>> geyByCityName(@Param("city") String city)
+    {
+       List<Developer> developerList = developerService.getByCityName(city);
+       return new ResponseEntity<>(developerList, HttpStatus.OK);
     }
 
 
