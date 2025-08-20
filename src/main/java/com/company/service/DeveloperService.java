@@ -43,4 +43,7 @@ public interface DeveloperService {
 
    // get developer by city using JPSQL
    List<Developer> getByCityName(String city);
+
+   // find by age using MySQL query
+   List<Developer> findByAge(int age);
 }
