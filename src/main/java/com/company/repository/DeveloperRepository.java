@@ -18,7 +18,7 @@ public interface DeveloperRepository extends JpaRepository<Developer, Integer> {
    List<Developer> findByCity(String city);
 
     // adding MySQL query to get data by age
-    @Query(value = "SELECT * FROM developer WHERE age = 32", nativeQuery = true)
+    @Query(value = "SELECT * FROM developer WHERE age =:age", nativeQuery = true)
     List<Developer> findByAge(int age);
 
 
