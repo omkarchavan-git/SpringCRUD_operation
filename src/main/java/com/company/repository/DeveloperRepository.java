@@ -2,6 +2,7 @@ package com.company.repository;
 
 import com.company.entity.Developer;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,6 +11,13 @@ import java.util.List;
 public interface DeveloperRepository extends JpaRepository<Developer, Integer> {
 
     //Search by City
-   
+
+    // adding JPSQL query
+
+    @Query("SELECT d FROM Developer d WHERE d.city = :pune")
+    Developer findByCity(String city);
+
+
+
 
 }
