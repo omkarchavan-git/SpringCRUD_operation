@@ -39,4 +39,8 @@ public interface DeveloperService {
 
    //Filter by LAst Name
    List<Developer> filterByLastName(String lName);
+
+
+   // get developer by city using JPSQL
+   List<Developer> getByCityName(String city);
 }
