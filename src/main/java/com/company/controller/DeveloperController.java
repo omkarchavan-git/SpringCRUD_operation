@@ -137,5 +137,14 @@ public class DeveloperController {
        return new ResponseEntity<>(developerList, HttpStatus.OK);
     }
 
+    // get by age using MySQL query
+
+    @GetMapping("/getByAge/{age}")
+    public ResponseEntity<List<Developer>> getByAge(@Param("age") int age)
+    {
+        List<Developer> developerList = developerService.findByAge(age);
+        return new ResponseEntity<>(developerList, HttpStatus.OK);
+    }
+
 
 }
