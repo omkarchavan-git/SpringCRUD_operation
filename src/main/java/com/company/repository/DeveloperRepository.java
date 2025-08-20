@@ -14,7 +14,7 @@ public interface DeveloperRepository extends JpaRepository<Developer, Integer> {
 
     // adding JPSQL query
 
-    @Query("SELECT d FROM Developer d WHERE d.city = :pune")
+    @Query("SELECT d FROM Developer d WHERE d.city = :city")
    List<Developer> findByCity(String city);
 
 
