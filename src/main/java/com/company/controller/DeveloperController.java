@@ -40,7 +40,6 @@ public class DeveloperController {
         return new ResponseEntity<>("Developer Data Saved", HttpStatus.CREATED);
     }
 
-
     // Add Multiple data at once
     @PostMapping("/addMultipleDevelopers")
     public ResponseEntity<List<Developer>> addAllDevelopers(@RequestBody List<Developer> developerList) {
