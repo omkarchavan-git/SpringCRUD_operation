@@ -133,7 +133,7 @@ public class DeveloperServiceImpl implements DeveloperService {
         return developerRepository.findByAge(age);
     }
 
-    @Scheduled(fixedRate = 6000)
+    @Scheduled(fixedRate = 6000)       // added schedular for 6 seconds
     public void schedular (){
         System.out.println("hello ");
     }
