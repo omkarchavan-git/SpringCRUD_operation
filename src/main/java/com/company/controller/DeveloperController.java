@@ -146,5 +146,4 @@ public class DeveloperController {
         return new ResponseEntity<>(developerList, HttpStatus.OK);
     }
 
-
 }
