@@ -20,8 +20,6 @@ public class Developer {
 
 
     private String firstname;
-
-
     private String lastName;
     private int age;
     private String city;
