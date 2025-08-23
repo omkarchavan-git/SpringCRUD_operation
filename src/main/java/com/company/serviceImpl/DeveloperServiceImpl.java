@@ -6,12 +6,15 @@ import com.company.repository.DeveloperRepository;
 import com.company.service.DeveloperService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 @Service
 public class DeveloperServiceImpl implements DeveloperService {
 
@@ -130,6 +133,10 @@ public class DeveloperServiceImpl implements DeveloperService {
         return developerRepository.findByAge(age);
     }
 
+    @Scheduled(fixedRate = 6000)
+    public void schedular (){
+        System.out.println("hello ");
+    }
 
 }
 
