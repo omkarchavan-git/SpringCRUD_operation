@@ -28,6 +28,9 @@ public class Developer {
     private String gender;
     private long salary;
 
+    private String DOB;
+    private String dateAndTime;
+
     // One Employee -> Many Vehicles
     @OneToMany(mappedBy = "Developer", cascade = CascadeType.ALL)
     private List<Vehicles> vehicles;
