@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -79,7 +80,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     // filter by one city
     @Override
     public List<Developer> getByCity(String city) {
-        return  developerRepository.findAll()
+        return developerRepository.findAll()
                 .stream().filter(c -> city.equalsIgnoreCase(c.getCity()))
                 .collect(Collectors.toList());
 
@@ -98,8 +99,8 @@ public class DeveloperServiceImpl implements DeveloperService {
     // filter by Gender
     @Override
     public List<Developer> filterByGender(String gender) {
-       List<Developer> developerList =  developerRepository.findAll()
-                .stream().filter( c -> gender.equalsIgnoreCase(c.getGender()))
+        List<Developer> developerList = developerRepository.findAll()
+                .stream().filter(c -> gender.equalsIgnoreCase(c.getGender()))
                 .collect(Collectors.toList());
         return developerList;
     }
@@ -108,7 +109,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     public List<Developer> filterByFirstName(String fName) {
 
         List<Developer> developerList = developerRepository.findAll()
-                .stream().filter( k -> fName.equalsIgnoreCase(k.getFirstname()))
+                .stream().filter(k -> fName.equalsIgnoreCase(k.getFirstname()))
                 .collect(Collectors.toList());
 
         return developerList;
@@ -118,7 +119,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     public List<Developer> filterByLastName(String lName) {
 
         List<Developer> developerList = developerRepository.findAll()
-                .stream().filter( k -> lName.equalsIgnoreCase(k.getLastName()))
+                .stream().filter(k -> lName.equalsIgnoreCase(k.getLastName()))
                 .collect(Collectors.toList());
         return developerList;
     }
@@ -133,11 +134,26 @@ public class DeveloperServiceImpl implements DeveloperService {
         return developerRepository.findByAge(age);
     }
 
-   // @Scheduled(fixedRate = 6000)       // added schedular for 6 seconds
-    public void schedular (){
+    // @Scheduled(fixedRate = 6000)       // added schedular for 6 seconds
+    public void schedular() {
         System.out.println("hello ");
     }
 
+
+    // Run daily at midnight
+    @Scheduled(cron = "0 0 0 * * ?")
+    public void updateAges() {
+        List<Developer> devs = developerRepository.findAll();
+        for (Developer dev : devs) {
+            LocalDate today = LocalDate.now();
+            if (dev.getDOB() != null
+                    && dev.getDOB().getDayOfMonth() == today.getDayOfMonth()
+                    && dev.getDOB().getMonth() == today.getMonth()) {
+                dev.setAge(dev.getAge() + 1);
+                developerRepository.save(dev);
+            }
+        }
+    }
 }
 
 
