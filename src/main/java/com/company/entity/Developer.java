@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -26,8 +28,8 @@ public class Developer {
     private String gender;
     private long salary;
 
-    private String DOB;
-    private String dateAndTime;
+    private LocalDate DOB;
+    private LocalDateTime dateAndTime;
 
     // One Employee -> Many Vehicles
     @OneToMany(mappedBy = "Developer", cascade = CascadeType.ALL)
