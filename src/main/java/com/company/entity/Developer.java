@@ -23,6 +23,8 @@ public class Developer {
 
     private String firstname;
     private String lastName;
+
+    @Transient   // age column will not be stored in DB
     private int age;
     private String city;
     private String gender;
