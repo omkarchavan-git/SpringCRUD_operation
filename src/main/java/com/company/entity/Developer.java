@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.List;
 
 @Entity
@@ -36,4 +37,13 @@ public class Developer {
     // One Employee -> Many Vehicles
     @OneToMany(mappedBy = "Developer", cascade = CascadeType.ALL)
     private List<Vehicles> vehicles;
+
+
+    // Getter for age - calculate dynamically
+    public int getAge() {
+        if (DOB == null) {
+            return 0;
+        }
+        return Period.between(DOB, LocalDate.now()).getYears();
+    }
 }
