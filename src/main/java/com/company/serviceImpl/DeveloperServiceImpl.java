@@ -26,7 +26,6 @@ public class DeveloperServiceImpl implements DeveloperService {
     // save single data into the developer
     @Override
     public String saveDeveloper(Developer developer) {
-
         Developer saveDeveloper = developerRepository.save(developer);
         return "developer saved";
     }
@@ -34,17 +33,18 @@ public class DeveloperServiceImpl implements DeveloperService {
     // add multiple developers data at once
     @Override
     public List<Developer> addAllDevelopers(List<Developer> developerList) {
-
         List<Developer> developerList1 = developerRepository.saveAll(developerList);
         return developerList1;
     }
 
+    // get all developer
     @Override
     public List<Developer> getAllDevelopers() {
         List<Developer> developerList = developerRepository.findAll();
         return developerList;
     }
 
+    // get by id
     @Override
     public Developer getDeveloperById(int id) {
         Developer developerList = developerRepository.findById(id)
@@ -52,8 +52,10 @@ public class DeveloperServiceImpl implements DeveloperService {
         return developerList;
     }
 
+
+    // update data
     @Override
-    public Developer updateDeveloper(int id, @NotNull @RequestBody Developer newData) {
+    public Developer updateDeveloper(int id, @NotNull  Developer newData) {
         Developer developer = developerRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
 
@@ -68,6 +70,7 @@ public class DeveloperServiceImpl implements DeveloperService {
         return updateDeveloper;
     }
 
+    // delete data
     @Override
     public Developer delteDeveloper(int id) {
         Developer developer = developerRepository.findById(id)
