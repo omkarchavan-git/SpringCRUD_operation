@@ -13,6 +13,4 @@ public class MyFirstCrudOperationApplication {
 		SpringApplication.run(MyFirstCrudOperationApplication.class, args);
 		System.out.println("Hello World");
 	}
-
-
 }
