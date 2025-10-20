@@ -9,8 +9,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.company</groupId>
-    <artifactId>MyFirstCRUDOperation</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>CRUDOperation</artifactId>
+    <version>0.2-SNAPSHOT</version>
     <name>MyFirstCRUDOperation</name>
     <description>SpringBootCRUD</description>
     <url/>
@@ -102,7 +102,6 @@
             <artifactId>commons-logging</artifactId>
             <version>1.2</version>
         </dependency>
-
 
     </dependencies>
 
